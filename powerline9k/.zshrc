@@ -2,7 +2,7 @@ start_time="$(date +%s)"
 
 # Antigen — A zsh plugin manager
 export ANTIGEN_DEFAULT_REPO_URL=https://github.com/sharat87/oh-my-zsh.git
-source ~/<DIR>/zsh/antigen/antigen.zsh
+source ~/Projects/zsh/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -11,7 +11,7 @@ antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
 lein
 pip
-#gradle
+gradle
 mix
 brew
 history
@@ -22,6 +22,7 @@ python
 # tmux
 vundle
 vi-mode
+Tarrasch/zsh-autoenv
 
 # Guess what to install when running an unknown command.
 command-not-found
@@ -69,11 +70,12 @@ POWERLEVEL9K_DIR_HOME_BACKGROUND="038"
 POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
 
 POWERLEVEL9K_VCS_GIT_ICON=''
-POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
-POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
+POWERLEVEL9K_VCS_STAGED_ICON='\uf055'
+POWERLEVEL9K_VCS_UNTRACKED_ICON='\uf059'
+POWERLEVEL9K_VCS_UNSTAGED_ICON='\uf06a'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\uf0ab'
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\uf0aa'
+POWERLEVEL9K_VCS_BRANCH_ICON=''
 
 POWERLEVEL9K_TIME_BACKGROUND="250"
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}" # \uf017
@@ -93,6 +95,8 @@ zsh_wifi_signal() {
 }
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="black"
+
+POWERLEVEL9K_BATTERY_ICON='\uf1c0'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined battery custom_wifi_signal)
@@ -121,5 +125,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 alias vi='vim'
 alias pih='ssh pi@192.168.1.68'
 alias pir='ssh pi@192.168.1.81'
+alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 
 alias clrtest='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
+
+### Other Scripts To Run At End ###
