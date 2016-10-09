@@ -91,7 +91,7 @@ zsh_wifi_signal() {
     local color='%F{yellow}'
     [[ $output -gt 40 ]] && color='%F{green}' #40
     [[ $output -lt 30 ]] && color='%F{red}' #30
-    echo -n "%{$color%}$output%% %{$color%}\uf1eb%"
+    echo -n "%{$color%}$output%% \uf1eb%"
 }
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="black"
@@ -99,7 +99,7 @@ POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="black"
 POWERLEVEL9K_BATTERY_ICON='\uf1c0'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined battery custom_wifi_signal)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined battery custom_wifi_signal_joined)
 
 antigen theme bhilburn/powerlevel9k powerlevel9k
 
@@ -126,7 +126,12 @@ alias vi='vim'
 alias pih='ssh pi@192.168.1.68'
 alias pir='ssh pi@192.168.1.81'
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+alias pip3-upgrade="pip3 list --outdated | cut -d' ' -f1 | xargs pip3 install --upgrade"
+alias mvn-std="mvn clean install -DskipTests -T 1.5C"
 
 alias clrtest='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 
+
 ### Other Scripts To Run At End ###
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
