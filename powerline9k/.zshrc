@@ -132,6 +132,23 @@ alias mvn-std="mvn clean install -DskipTests -T 1.5C"
 alias clrtest='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 
 
-### Other Scripts To Run At End ###
+### Elixir Related ###
+alias coverage='MIX_ENV=test mix coveralls.html'
+
+function format_code () {
+    for f in `git diff-tree --no-commit-id --name-only -r HEAD`; do mix format $f; done
+}
+
+function format_diff_code () {
+    for f in `git diff --name-only $1 -- "*.ex" "*.exs"`; do mix format $f; done
+}
+
+function change-commits() {
+    git filter-branch --commit-filter 'if [ "$GIT_AUTHOR_EMAIL" = "Kevin McAbee" ];
+        then export GIT_AUTHOR_EMAIL=kevin.mcabee@gmail.com;
+        fi; git commit-tree "$@"'
+}
+
+### Final Settings To Run At End ###
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
