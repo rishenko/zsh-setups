@@ -105,7 +105,7 @@ antigen theme bhilburn/powerlevel9k powerlevel9k
 
 # Vim like bindings plugin. Need to run after theme, so mode indicator
 # can be set, if the theme didn't already set it.
-antigen-bundle sharat87/zsh-vim-mode
+antigen bundle sharat87/zsh-vim-mode
 ZSH_VIM_MODE_NORMAL_MAP=^k
 
 # TELL ANTIGEN WE'RE DONE
