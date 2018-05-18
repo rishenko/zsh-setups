@@ -1,5 +1,8 @@
 start_time="$(date +%s)"
 
+# PATH
+export PATH="/usr/local/bin:$PATH"
+
 # Antigen — A zsh plugin manager
 export ANTIGEN_DEFAULT_REPO_URL=https://github.com/sharat87/oh-my-zsh.git
 source ~/Projects/zsh/antigen/antigen.zsh
@@ -118,8 +121,6 @@ auto-ls () {
 }
 chpwd_functions=( auto-ls $chpwd_functions )
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 ### ALIASES ###
 alias vi='vim'
@@ -133,7 +134,8 @@ alias clrtest='for code ({000..255}) print -P -- "$code: %F{$code}This is how yo
 
 
 ### Elixir Related ###
-alias coverage='MIX_ENV=test mix coveralls.html'
+alias coverage='mix coveralls --sort missed:asc'
+alias coverage-html='mix coveralls.html'
 
 function format_code () {
     for f in `git diff-tree --no-commit-id --name-only -r HEAD`; do mix format $f; done
@@ -143,12 +145,6 @@ function format_diff_code () {
     for f in `git diff --name-only $1 -- "*.ex" "*.exs"`; do mix format $f; done
 }
 
-function change-commits() {
-    git filter-branch --commit-filter 'if [ "$GIT_AUTHOR_EMAIL" = "Kevin McAbee" ];
-        then export GIT_AUTHOR_EMAIL=kevin.mcabee@gmail.com;
-        fi; git commit-tree "$@"'
-}
-
 ### Final Settings To Run At End ###
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
+export ERL_AFLAGS="-kernel shell_history enabled"
